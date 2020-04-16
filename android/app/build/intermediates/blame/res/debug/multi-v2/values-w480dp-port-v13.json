@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "E:\\MyProject\\ReactNativ\\reactNativeCrudFiresote\\android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-w480dp-port-v13\\values-w480dp-port-v13.xml",
+            "outputFile": "E:\\MyProject\\ReactNativ\\CreaditCard\\android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-w480dp-port-v13\\values-w480dp-port-v13.xml",
             "map": [
                 {
                     "source": "C:\\Users\\1\\.gradle\\caches\\transforms-2\\files-2.1\\65c7d921f85a09c5e1c9b551d989ed6f\\res\\values-w480dp-port-v13\\values-w480dp-port-v13.xml",

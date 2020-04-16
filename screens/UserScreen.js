@@ -1,60 +1,70 @@
-/* eslint-disable react-native/no-inline-styles */
 import React, {Component} from 'react';
 import {
   StatusBar,
   TouchableOpacity,
   Text,
+  FlatList,
+  Image,
   ScrollView,
   ActivityIndicator,
   View,
 } from 'react-native';
-import TouchableScale from 'react-native-touchable-scale'; // https://github.com/kohver/react-native-touchable-scale
-import LinearGradient from 'react-native-linear-gradient';
+import {colors} from './shared/constant';
 import styles from './styles';
-import {ListItem} from 'react-native-elements';
-import firebase from '../database/firebaseDb';
 
 class UserScreen extends Component {
   constructor() {
     super();
-    this.firestoreRef = firebase.firestore().collection('cards');
     this.state = {
-      isLoading: true,
+      isLoading: false,
       cardArr: [],
     };
   }
 
   componentDidMount() {
-    this.unsubscribe = this.firestoreRef.onSnapshot(this.getCollection);
+    this.goForFetch();
   }
 
-  componentWillUnmount() {
-    this.unsubscribe();
-  }
-
-  getCollection = querySnapshot => {
-    const cardArr = [];
-    querySnapshot.forEach(res => {
-      const {number, expiry, cvc} = res.data();
-      cardArr.push({
-        key: res.id,
-        res,
-        number,
-        expiry,
-        cvc,
-      });
-    });
+  goForFetch = () => {
     this.setState({
-      cardArr,
-      isLoading: false,
+      isLoading: true,
     });
+    fetch('https://server.docmz.com/stripe/list/cus_G8M6Gz7PTLlfnF')
+      .then(response => response.json())
+      .then(responseJson => {
+        console.log('getting data from fetch', responseJson);
+
+        this.setState({
+          isLoading: false,
+          cardArr: responseJson.data.data,
+        });
+      })
+      .catch(error => console.log(error));
+  };
+
+  renderItem = data => {
+    return (
+      <TouchableOpacity
+        style={styles.cardItem}
+        onPress={() =>
+          this.props.navigation.navigate('UserDetailScreen', {data})
+        }>
+        {/* <View style={styles.cardItem}> */}
+        <Image
+          style={styles.cardimg}
+          source={require('../assets/image/card_back.png')}
+        />
+        <Text style={styles.cardlabel}>{data.name}</Text>
+        {/* </View> */}
+      </TouchableOpacity>
+    );
   };
 
   render() {
     if (this.state.isLoading) {
       return (
         <View style={styles.preloader}>
-          <ActivityIndicator size="large" color="#9E9E9E" />
+          <ActivityIndicator size="large" color={colors.dark} />
         </View>
       );
     }
@@ -63,52 +73,28 @@ class UserScreen extends Component {
         <StatusBar
           barStyle="light-content"
           hidden={false}
-          backgroundColor="#621FF7"
+          backgroundColor={colors.bar_color}
           translucent={true}
         />
         <ScrollView style={styles.container}>
-          {this.state.cardArr.map((item, i) => {
-            return (
-              <View style={{borderRadius: 5, marginVertical: 5}}>
-                <ListItem
-                  Component={TouchableScale}
-                  friction={90} //
-                  tension={100} // These props are passed to the parent component (here TouchableScale)
-                  activeScale={0.95} //
-                  linearGradientProps={{
-                    colors: ['#621FF7', '#824ef4'],
-                    // start: [1, 0],
-                    // end: [1, 0],
-                  }}
-                  ViewComponent={LinearGradient} // Only if no expo
-                  leftAvatar={{
-                    rounded: false,
-                    source: require('../assets/image/card.png'),
-                  }}
-                  title={item.number}
-                  titleStyle={{
-                    color: 'white',
-                    fontSize: 20,
-                    fontWeight: 'bold',
-                    paddingLeft: 30,
-                  }}
-                  subtitleStyle={{color: 'white', textAlign: 'right'}}
-                  subtitle={item.expiry + '     ' + item.cvc}
-                  chevron={{color: 'white'}}
-                  onPress={() => {
-                    this.props.navigation.navigate('UserDetailScreen', {
-                      userkey: item.key,
-                    });
-                  }}
-                />
-              </View>
-            );
-          })}
+          <FlatList
+            data={this.state.cardArr}
+            renderItem={({item}) => this.renderItem(item)}
+            // renderItem={({item}) => (
+            //   <View>
+            //     <Text>{item.id}</Text>
+            //     <Text>{item.brand}</Text>
+            //     <Text>{item.country}</Text>
+            //   </View>
+            // )}
+            keyExtractor={(item, index) => index.toString()}
+          />
         </ScrollView>
+
         <TouchableOpacity
           style={styles.btn}
           onPress={() => this.props.navigation.navigate('AddUserScreen')}>
-          <Text style={styles.btntext}>Add</Text>
+          <Text style={styles.btntext}>New Card</Text>
         </TouchableOpacity>
       </View>
     );

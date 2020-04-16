@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "E:\\MyProject\\ReactNativ\\reactNativeCrudFiresote\\android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-b+sr+Latn\\values-b+sr+Latn.xml",
+            "outputFile": "E:\\MyProject\\ReactNativ\\CreaditCard\\android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-b+sr+Latn\\values-b+sr+Latn.xml",
             "map": [
                 {
                     "source": "C:\\Users\\1\\.gradle\\caches\\transforms-2\\files-2.1\\4d5a1b485d6b39cf86cd8299cb0023b0\\res\\values-b+sr+Latn\\values.xml",

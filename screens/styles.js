@@ -1,28 +1,40 @@
 import {StyleSheet} from 'react-native';
-
+import {colors} from './shared/constant';
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 10,
+    // alignItems: 'center',
+    // padding: 10,
   },
-  addframe: {
-    padding: 20,
+
+  cardframe: {
+    alignItems: 'center',
+    // backgroundColor:'green',
     margin: 20,
-    backgroundColor: 'white',
-    borderRadius: 8,
+  },
+  cardItem: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    paddingHorizontal: 20,
+    paddingVertical: 10,
+    // borderWidth: 1,
+    // borderColor: colors.grey,
+    borderRadius: 5,
+    backgroundColor: colors.card_color,
     shadowColor: 'black',
-    // shadowOffset: {width: 0, height: 0},
-    shadowOpacity: 1,
-    // shadowRadius: 0,
+    shadowOffset: {width: 10, height: 10},
+    shadowOpacity: 0.5,
+    shadowRadius: 5,
     elevation: 10,
   },
-  inputGroup: {
-    flexDirection: 'row',
-    padding: 10,
-    width: '100%',
-    borderBottomWidth: 1,
-    borderBottomColor: '#ddd',
+  cardlabel: {
+    // flex: 1,
+    color: colors.white,
+    fontSize: 18,
   },
+  cardimg: {width: 40, height: 30, alignItems: 'center'},
+
   preloader: {
     left: 0,
     right: 0,
@@ -35,9 +47,11 @@ const styles = StyleSheet.create({
 
   btn: {
     alignItems: 'center',
-    backgroundColor: '#621FF7',
+    justifyContent: 'center',
+    backgroundColor: colors.card_color,
     padding: 10,
-    marginHorizontal: 100,
+    marginVertical: 20,
+    marginHorizontal: 40,
     marginTop: 20,
     borderRadius: 10,
     shadowColor: 'black',
@@ -50,13 +64,52 @@ const styles = StyleSheet.create({
     color: 'white',
     fontSize: 18,
   },
-  input: {width: '80%', color: 'black', paddingLeft: 20, fontSize: 18},
+  inputGroup: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginVertical: 5,
+  },
+  label: {
+    textAlign: 'left',
+    color: 'black',
+    fontSize: 18,
+    paddingVertical: 10,
+  },
+  shadow: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: 'white',
+    borderColor: 'white',
+    borderWidth: 0.5,
+    borderRadius: 10,
+    shadowColor: 'black',
+    // shadowOffset: {
+    //   width: 0,
+    //   height: 4,
+    // },
+    shadowOpacity: 0.5,
+    shadowRadius: 4.65,
+    elevation: 10,
+  },
+
   icon: {
     width: 30,
     height: 30,
     opacity: 0.5,
     alignSelf: 'center',
     marginLeft: 20,
+  },
+  menuItem: {padding: 10, color: 'white', fontSize: 20},
+  background: {
+    flex: 1,
+    resizeMode: 'cover',
+  },
+  page_title: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingTop: 80,
+    // backgroundColor:'green'
   },
 });
 

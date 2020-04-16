@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "E:\\MyProject\\ReactNativ\\reactNativeCrudFiresote\\android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-km\\values-km.xml",
+            "outputFile": "E:\\MyProject\\ReactNativ\\CreaditCard\\android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-km\\values-km.xml",
             "map": [
                 {
                     "source": "C:\\Users\\1\\.gradle\\caches\\transforms-2\\files-2.1\\f7937d2bc6e12e12966b7f21b0f33dc9\\res\\values-km\\values-km.xml",

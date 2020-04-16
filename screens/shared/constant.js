@@ -1,0 +1,16 @@
+export const colors = {
+  headercolor: '#444be4',
+  black: '#000',
+  white: '#fff',
+  bright: '#fafafa',
+  bar_color: '#621FF7',
+  card_color: '#e86262',
+  bakcdark: '#d0c9fb',
+  blue: '#1760E3',
+  creamy: '#eef7ff',
+  grey: '#ddd',
+  red: '#ff0000',
+  backred: '#fbc0c0',
+  carb: '#fea56c',
+  fat: '#3fc7bc',
+};
